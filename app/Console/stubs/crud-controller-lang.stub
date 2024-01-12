@@ -1,0 +1,97 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Http\Requests\DummyClassRequest;
+use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use \App\Http\Traits\CrudHelpers;
+use \App\Http\Traits\CrudPermissions;
+
+/**
+ * Class DummyClassCrudController
+ * @package App\Http\Controllers\Admin
+ * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
+ */
+class DummyClassCrudController extends CrudController
+{
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+  //  use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    
+    use CrudHelpers;
+    use CrudPermissions;
+
+
+    /**
+     * Configure the CrudPanel object. Apply settings to all operations.
+     * 
+     * @return void
+     */
+    public function setup()
+    {
+        CRUD::setModel(\App\Models\DummyClass::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/dummy_class');
+        CRUD::setEntityNameStrings(__('template.dummy_class'), __('template.DummyTable'));
+        $this->setupPermissionActions('DummyTable');
+    }
+
+    /**
+     * Define what happens when the List operation is loaded.
+     * 
+     * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
+     * @return void
+     */
+    protected function setupListOperation()
+    {
+         $this->crud->addColumn([
+            'name' => 'title', 
+            'label' => trans('template.title'), 
+         ]);
+    }
+
+    /**
+     * Define what happens when the Create operation is loaded.
+     * 
+     * @see https://backpackforlaravel.com/docs/crud-operation-create
+     * @return void
+     */
+    protected function setupCreateOperation()
+    {
+        CRUD::setValidation(DummyClassRequest::class);
+
+        $this->crud->addField([
+            'name' => 'active',
+            'type' => 'checkbox',
+            'default' =>false,
+            'label' => trans('template.active')
+        ]);
+
+        $this->crud->addField([
+            'name' => 'priority',
+            'type' => 'number',
+            'default' => '0',
+            'label' => trans('template.priority')
+        ]);
+
+          $this->crud->addField([
+            'name' => 'title',
+            'label' => trans('template.title'),
+            'type' => 'text',
+            'tab' => trans('template.content')
+        ]);
+    }
+
+    /**
+     * Define what happens when the Update operation is loaded.
+     * 
+     * @see https://backpackforlaravel.com/docs/crud-operation-update
+     * @return void
+     */
+    protected function setupUpdateOperation()
+    {
+        $this->setupCreateOperation();
+    }
+}

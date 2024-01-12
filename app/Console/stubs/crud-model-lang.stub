@@ -1,0 +1,32 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
+
+/* MULTIIDIOMA */
+use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
+
+/* LAngs de Michicoin, aixo ens afegeix funcions auxiliars per treballar com getExtra i getContent  */
+use  App\Http\Traits\ModelLang;
+
+class DummyClass extends Model
+{
+    use CrudTrait;
+    use HasTranslations;
+    use ModelLang;   
+
+    protected $table = 'DummyTable';
+    protected $guarded = ['id'];
+    public $translatable = ['title','content'];
+    protected $fakeColumns = ['extras','content'];
+
+
+    //afegeix data que es carregara a la vista
+   public function addPreparedData(){
+       $data = [];
+       return $data;
+   }
+
+}

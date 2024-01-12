@@ -1,0 +1,2 @@
+<?php
+$this->addIcon('icon');

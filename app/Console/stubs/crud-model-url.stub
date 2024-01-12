@@ -1,0 +1,50 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
+
+/* MULTIIDIOMA */
+use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
+
+/* URLS de Michicoin, aixo ens afegeix la relació automàticament, l'attribut URL, la plantilla per defecte i el preparedData (que podem extendre amb addPreparedData)  */
+use  App\Http\Traits\ModelUrl;
+
+class DummyClass extends Model
+{
+    use CrudTrait;
+    use HasTranslations;
+    use ModelUrl;   
+    /*
+    |--------------------------------------------------------------------------
+    | GLOBAL VARIABLES
+    |--------------------------------------------------------------------------
+    */
+
+    protected $table = 'DummyTable';
+    // protected $primaryKey = 'id';
+    // public $timestamps = false;
+    protected $guarded = ['id'];
+    // protected $fillable = [];
+    // protected $hidden = [];
+    // protected $dates = [];
+    public $translatable = ['title','content'];
+    //Carpeta on tindrem les plantilles, encara que sigui una
+    public $template_folder = 'DummyTable';
+    //Si hem de dependre de una pàgina, aqui definim la seva plantilla per poderla obtenir i tenirla a les vistes
+    public $father_page_template = 'DummyItem';
+    //Si tenim plantilles aquesta linea ens sobrara
+    public $template = 'DummyItem';
+    //i aquesta s'haura de posar
+    //protected $templates = 'page_DummyTable.php';
+    protected $fakeColumns = ['extras','content'];
+
+
+    //afegeix data que es carregara a la vista
+   public function addPreparedData(){
+       $data = [];
+       return $data;
+   }
+
+}
