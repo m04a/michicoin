@@ -12,7 +12,6 @@
       <link rel="stylesheet" href="css/swiper.css" />
       <link rel="stylesheet" href="css/style.css" />
     <base href="{{url('')}}/"/>
-      <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,8 +44,8 @@
                           <div class="header__btns">
                               <div class="header__sm-info">
                                   <img src="img/arrow-to-top.svg" alt="icon" class="header__sm-info-icon" id="arrowIconForWidgetHeader" />
-                                  <a href="https://coinmarketcap.com/currencies/Michicoin/" target="_blank">$
-                                      <span id="priceHeader">0.000000000</span></a></div>
+                                  <a href="https://coinmarketcap.com/currencies/Michicoin/" target="_blank">
+                                      <span id="priceHeader"></span></a>$</div>
                           </div>
                       </div>
                   </nav>
@@ -59,7 +58,7 @@
           </div>
       </header>
 
-
+  </div>
     @yield('content')
     @yield('js')
   <script src="js/swiper.js" defer></script>

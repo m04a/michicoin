@@ -48,7 +48,6 @@ class EntryCrudController extends CrudUrlController
             'label' => trans('template.publish'), // Table column heading
             'type' => 'check'
          ]);
-        $this->crud->addColumn('published_at');
     }
 
     /**
@@ -66,29 +65,12 @@ class EntryCrudController extends CrudUrlController
             'label' => 'URL',
             'type' => 'url'
         ]);
-        $this->crud->addField([
-            'name' => 'metas',
-            'type' => 'metatags',
-            'tab' => trans('admin.metas'),
-            'attribute' => 'meta_title'
-        ]);
-
-        $this->crud->addField([  
-            'name' => 'published_at',
-            'label' => trans('template.published_at'),
-            'type' => 'datetime_picker',
-            'datetime_picker_options' => [
-                'format' => 'DD/MM/YYYY HH:mm'
-            ],
-            'allows_null' => false,
-            'tab' => trans('template.publish')
-        ]);
 
         $this->crud->addField([  
             'name' => 'published',
             'label' => trans('template.published'),
             'type' => 'checkbox',
-            'tab' => trans('template.publish')
+            'tab' => trans('template.content')
         ]);
 
         $this->crud->addField([
@@ -133,8 +115,8 @@ class EntryCrudController extends CrudUrlController
         ]);
 
         $this->crud->addField([
-            'name' => 'ytvideo',
-            'label' => trans('template.ytvideo'),
+            'name' => 'link_comic',
+            'label' => trans('template.comic'),
             'type' => 'text',
             'fake' => true,
             'store_in' => 'extras',
@@ -142,19 +124,10 @@ class EntryCrudController extends CrudUrlController
         ]);
 
         $this->crud->addField([
-            'name' => 'gallery',
-            'defaul' => [],
-            'fake' => true,
-            'store_in' => 'extras',
-            'type' => 'repeatable',
-            'fields' => [
-                [
-                    'name' => 'image',
-                    'type' => 'browse_image',
-                    'label' => trans('template.image'),
-                ]       
-            ],     
-            'tab' => trans('template.media')
+            'name' => 'metas',
+            'type' => 'metatags',
+            'tab' => trans('admin.metas'),
+            'attribute' => 'meta_title'
         ]);
 
 

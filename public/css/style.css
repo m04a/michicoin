@@ -70,7 +70,16 @@ img {
     max-width: 1140px;
     padding: 0 10px;
 }
-
+.big-made-text {
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 52px!important;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 40px;
+}
 .menu-list {
     display: flex;
     align-items: center;
@@ -350,13 +359,12 @@ img {
     z-index: 2;
     margin-bottom: 28px;
 }
-.big-info__inner {
-    background-color: white;
+.big-info-inner {
     background-size: cover, cover;
     border-radius: 12px;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: center;
 }
 .big-info__text-box {
     display: flex;
@@ -394,10 +402,11 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
 }
 .links-list__link:hover {
-    background: rgba(181, 249, 114, 0.15);
+    scale: 1.2;
+    transition: all 250ms ease-in-out;
 }
 .links-list__link:last-child {
     margin-right: 0;
@@ -407,7 +416,7 @@ img {
     height: 40px;
 }
 .footer {
-    background: #141825;
+    background: rgba(20, 24, 37, 0.6);
 }
 .footer__inner {
     padding: 21px 0 16px 0;
@@ -797,7 +806,7 @@ img {
     top: 0;
     height: 100%;
     width: 8px;
-    background: #2c35ff;
+    background: #c24e65;
 }
 .heading {
     font-family: Lexend;
